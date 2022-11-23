@@ -7,6 +7,7 @@ export const dirItemContext = createContext({
   showSideBar: true,
   setShowSideBar: () => {},
   dirItemIdx: 0,
+  dirItemLength: 0,
   setDirItemIdx: () => {},
 })
 
@@ -57,6 +58,7 @@ function App() {
         showSideBar,
         setShowSideBar,
         dirItemIdx,
+        dirItemLength: dir.length,
         setDirItemIdx,
       }}
     >
@@ -74,6 +76,7 @@ function App() {
       <div className="flex bg-[#e4e5e5] pt-16">
         <SectionDir dir={dir} />
         <SectionPage
+          setDirItemIdx={setDirItemIdx}
           content={raw == '' ? '' : raw.sections[dirItemIdx].content}
         />
       </div>

@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from 'react'
 import { dirItemContext } from '../../App'
 
-function SectionPage({ content }) {
+function SectionPage({ content, setDirItemIdx }) {
   const [raw, setRaw] = useState('')
-  const { showSideBar } = useContext(dirItemContext)
+  const { dirItemIdx, showSideBar, dirItemLength } = useContext(dirItemContext)
 
   useEffect(() => {
     async function fetchData() {
@@ -28,12 +28,29 @@ function SectionPage({ content }) {
           <div dangerouslySetInnerHTML={{ __html: content }}></div>
         </div>
       )}
-      {/* <div className="  h-5 bg-sky-500 flex place-content-between">
-        <div className=" rounded-full w-12 h-12 bg-[#017fff] -ml-20"></div>
-        <div className=" rounded-full w-12 h-12 bg-[#017fff] -mr-20"></div>
-      </div> */}
-      {/* <div className="fixed top-[40%] w-12 h-12 bg-gray-400 rounded-full"></div> */}
-      {/* <div className="fixed bottom-[40%] w-12 h-12 bg-gray-400 rounded-full"></div> */}
+      <div
+        style={{
+          marginLeft: showSideBar ? '160px' : 'unset',
+        }}
+        className="fixed left-[50%] -translate-x-1/2  max-w-[980px] w-full bottom-20 flex place-content-between"
+      >
+        <div
+          style={{ visibility: dirItemIdx == 0 ? 'hidden' : 'visible' }}
+          onClick={() => setDirItemIdx((prev) => prev - 1)}
+          className="cursor-pointer rounded-full w-12 h-12 bg-[#017fff] shadow-2xl flex justify-center items-center"
+        >
+          <div className="border-transparent border-l-white border-b-white w-3 h-3 ml-1 rotate-45 border-2"></div>
+        </div>
+        <div
+          style={{
+            visibility: dirItemIdx == dirItemLength - 1 ? 'hidden' : 'visible',
+          }}
+          onClick={() => setDirItemIdx((prev) => prev + 1)}
+          className="cursor-pointer rounded-full w-12 h-12 bg-[#017fff] shadow-2xl flex justify-center items-center"
+        >
+          <div className="border-transparent border-l-white border-b-white w-3 h-3 -ml-1 -rotate-[135deg] border-2"></div>
+        </div>
+      </div>
     </div>
   )
 }
