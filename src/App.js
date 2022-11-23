@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useState, useRef, forwardRef } from 'react'
 import './index.css'
 import SectionPage from './components/section-page/SectionPage'
 import SectionDir from './components/section-dir/SectionDir'
@@ -52,6 +52,38 @@ function App() {
     }
   }, [])
 
+  const [showBookShelf, setShowBookShelf] = useState(false)
+
+  const bookShelfRef = useRef(null)
+  const bookShelfButtonRef = useRef(null)
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        bookShelfRef.current &&
+        !bookShelfRef.current.contains(event.target) &&
+        !bookShelfButtonRef.current.contains(event.target)
+      ) {
+        setShowBookShelf(false)
+      }
+    }
+    // Bind the event listener
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [bookShelfRef])
+
+  const BookShelf = forwardRef((props, ref) => {
+    return (
+      <div
+        ref={ref}
+        className=" shadow-xl rounded-md fixed right-[48px] top-[80px] w-[270px] h-[450px] bg-white "
+      ></div>
+    )
+  })
+
   return (
     <dirItemContext.Provider
       value={{
@@ -71,8 +103,15 @@ function App() {
           ></div>
           <div>{bookTitle}</div>
         </div>
-        <div className=" w-8 h-8 rounded-full border bg-sky-500"></div>
+        {/* 课程选择 */}
+        <div
+          ref={bookShelfButtonRef}
+          onClick={() => setShowBookShelf((prev) => !prev)}
+          className="cursor-pointer w-8 h-8 rounded-full border bg-sky-500"
+        ></div>
+        {showBookShelf ? <BookShelf ref={bookShelfRef} /> : null}
       </div>
+      {/* 内容区 */}
       <div className="flex bg-[#e4e5e5] pt-16">
         <SectionDir dir={dir} />
         <SectionPage

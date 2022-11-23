@@ -6,7 +6,7 @@ function SectionDir({ dir }) {
   const { showSideBar } = useContext(dirItemContext)
   return (
     <div
-      className="fixed w-[320px] z-20"
+      className="fixed w-[320px] z-20 shadow-xl"
       style={{
         marginLeft: showSideBar ? '0' : '-320px',
       }}

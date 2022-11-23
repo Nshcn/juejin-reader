@@ -24,10 +24,11 @@ function SectionPage({ content, setDirItemIdx }) {
       className="w-full ml-[320px]"
     >
       {raw == '' ? null : (
-        <div className="max-w-[800px] min-w-[600px] bg-white mx-auto mt-12 book-section-view p-20">
+        <div className=" shadow-xl max-w-[800px] min-w-[600px] bg-white mx-auto mt-12 book-section-view p-20">
           <div dangerouslySetInnerHTML={{ __html: content }}></div>
         </div>
       )}
+      {/* 章节跳转按钮 */}
       <div
         style={{
           marginLeft: showSideBar ? '160px' : 'unset',
