@@ -12,8 +12,15 @@ function SectionDir({ dir }) {
       }}
     >
       <div className="flex-auto w-80 h-screen bg-[#f7f8fa] fixed">
-        {dir.map((title, idx) => {
-          return <SectionDirItem title={title} idx={idx} key={title} />
+        {dir.map(({ title, read_time }, idx) => {
+          return (
+            <SectionDirItem
+              title={title}
+              readTime={read_time}
+              idx={idx}
+              key={title}
+            />
+          )
         })}
       </div>
     </div>

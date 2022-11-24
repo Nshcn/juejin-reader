@@ -27,7 +27,10 @@ function App() {
           const getDir = (sections) => {
             const dir = []
             sections.forEach((section) => {
-              dir.push(section.title)
+              dir.push({
+                title: section.title,
+                read_time: section.read_time,
+              })
             })
             return dir
           }
