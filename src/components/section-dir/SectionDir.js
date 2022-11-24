@@ -11,7 +11,7 @@ function SectionDir({ dir }) {
         marginLeft: showSideBar ? '0' : '-320px',
       }}
     >
-      <div className="flex-auto w-80 h-screen bg-[#f7f8fa] fixed">
+      <div className=" overflow-scroll flex-auto w-80 h-[calc(100vh_-_64px)] bg-[#f7f8fa] fixed">
         {dir.map(({ title, read_time }, idx) => {
           return (
             <SectionDirItem
