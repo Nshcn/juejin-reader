@@ -17,9 +17,27 @@ function App() {
   const [dirItemIdx, setDirItemIdx] = useState(0)
   const [showSideBar, setShowSideBar] = useState(true)
   const [bookTitle, setBookTitle] = useState('')
+  const [bookShelf, setBookShelf] = useState([])
+  const [bookletIdx, setBookletIdx] = useState(0)
+
+  // 获取书架信息
   useEffect(() => {
-    async function fetchData() {
-      await fetch('http://127.0.0.1:4000/book')
+    async function fetchBookShelf() {
+      await fetch('http://127.0.0.1:4000/bookshelf')
+        .then((res) => res.json())
+        .then((res) => {
+          setBookShelf(res)
+        })
+    }
+    fetchBookShelf()
+  }, [])
+
+  // 获取具体一本小册
+  useEffect(() => {
+    async function fetchBooklet() {
+      await fetch(
+        `http://127.0.0.1:4000/book/${bookShelf[bookletIdx].booklet_id}`
+      )
         .then((res) => res.json())
         .then((res) => {
           setRaw(res)
@@ -39,8 +57,10 @@ function App() {
           setBookTitle(res.title)
         })
     }
-    fetchData()
-  }, [])
+    if (bookShelf.length > 0) {
+      fetchBooklet()
+    }
+  }, [bookShelf, bookletIdx])
 
   const resizeUpdate = (e) => {
     let w = e.target.innerWidth
@@ -78,12 +98,24 @@ function App() {
     }
   }, [bookShelfRef])
 
-  const BookShelf = forwardRef((props, ref) => {
+  const BookShelf = forwardRef(({ bookShelf }, ref) => {
     return (
       <div
         ref={ref}
         className=" shadow-xl rounded-md fixed right-[48px] top-[80px] w-[270px] h-[450px] bg-white "
-      ></div>
+      >
+        {bookShelf.map((book, idx) => {
+          return (
+            <div
+              className=" cursor-pointer hover:bg-slate-100"
+              key={book.title}
+              onClick={() => setBookletIdx(idx)}
+            >
+              {book.title}
+            </div>
+          )
+        })}
+      </div>
     )
   })
 
@@ -112,7 +144,9 @@ function App() {
           onClick={() => setShowBookShelf((prev) => !prev)}
           className="cursor-pointer w-8 h-8 rounded-full border bg-sky-500"
         ></div>
-        {showBookShelf ? <BookShelf ref={bookShelfRef} /> : null}
+        {showBookShelf ? (
+          <BookShelf ref={bookShelfRef} bookShelf={bookShelf} />
+        ) : null}
       </div>
       {/* 内容区 */}
       <div className="flex bg-[#e4e5e5] pt-16">
@@ -120,6 +154,7 @@ function App() {
         <SectionPage
           setDirItemIdx={setDirItemIdx}
           content={raw == '' ? '' : raw.sections[dirItemIdx].content}
+          comments={raw == '' ? '' : raw.comments[dirItemIdx].comment}
         />
       </div>
     </dirItemContext.Provider>

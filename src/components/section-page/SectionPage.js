@@ -1,21 +1,9 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { dirItemContext } from '../../App'
 import SectionComments from '../section-comments/SectionComments'
 
-function SectionPage({ content, setDirItemIdx }) {
-  const [raw, setRaw] = useState('')
+function SectionPage({ content, comments, setDirItemIdx }) {
   const { dirItemIdx, showSideBar, dirItemLength } = useContext(dirItemContext)
-
-  useEffect(() => {
-    async function fetchData() {
-      await fetch('http://127.0.0.1:4000/book')
-        .then((res) => res.json())
-        .then((res) => {
-          setRaw(res)
-        })
-    }
-    fetchData()
-  }, [])
 
   return (
     <div
@@ -24,13 +12,12 @@ function SectionPage({ content, setDirItemIdx }) {
       }}
       className="w-full ml-[320px]"
     >
-      {raw == '' ? null : (
+      {content == '' ? null : (
         <div className=" shadow-xl max-w-[800px] min-w-[600px] bg-white mx-auto mt-12 book-section-view p-20">
+          {/* 内容区 */}
           <div dangerouslySetInnerHTML={{ __html: content }}></div>
           {/* 评论区 */}
-          <SectionComments
-            comments={raw == '' ? '' : raw.comments[dirItemIdx].comment}
-          />
+          <SectionComments comments={comments} />
         </div>
       )}
       {/* 章节跳转按钮 */}

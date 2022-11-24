@@ -14,7 +14,10 @@ export default function SectionCommentsItem({ comment }) {
         {/* 评论回复 */}
         {comment.replys.map((reply) => {
           return (
-            <div className="border-b text-sm bg-[#f7f8fa] p-2 flex">
+            <div
+              className="border-b text-sm bg-[#f7f8fa] p-2 flex"
+              key={reply.user_name}
+            >
               <div className="w-12">
                 <Avatar />
               </div>
