@@ -102,12 +102,12 @@ function App() {
     return (
       <div
         ref={ref}
-        className=" shadow-xl rounded-md fixed right-[48px] top-[80px] w-[270px] h-[450px] bg-white "
+        className="scrollbar overflow-y-scroll p-3 shadow-xl rounded-md fixed right-[48px] top-[80px] w-[270px] h-[450px] bg-white font-normal"
       >
         {bookShelf.map((book, idx) => {
           return (
             <div
-              className=" cursor-pointer hover:bg-slate-100"
+              className=" rounded-md p-1 cursor-pointer hover:bg-slate-100 text-sm"
               key={book.title}
               onClick={() => setBookletIdx(idx)}
             >

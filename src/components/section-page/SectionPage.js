@@ -25,7 +25,7 @@ function SectionPage({ content, comments, setDirItemIdx }) {
         style={{
           marginLeft: showSideBar ? '160px' : 'unset',
         }}
-        className="fixed left-[50%] -translate-x-1/2  max-w-[980px] w-full bottom-20 flex place-content-between"
+        className="fixed left-[50%] -translate-x-1/2 px-8 max-w-[980px] w-full top-[50%] flex place-content-between"
       >
         <div
           style={{ visibility: dirItemIdx == 0 ? 'hidden' : 'visible' }}
