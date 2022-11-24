@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import { dirItemContext } from '../../App'
+import SectionComments from '../section-comments/SectionComments'
 
 function SectionPage({ content, setDirItemIdx }) {
   const [raw, setRaw] = useState('')
@@ -26,6 +27,10 @@ function SectionPage({ content, setDirItemIdx }) {
       {raw == '' ? null : (
         <div className=" shadow-xl max-w-[800px] min-w-[600px] bg-white mx-auto mt-12 book-section-view p-20">
           <div dangerouslySetInnerHTML={{ __html: content }}></div>
+          {/* 评论区 */}
+          <SectionComments
+            comments={raw == '' ? '' : raw.comments[dirItemIdx].comment}
+          />
         </div>
       )}
       {/* 章节跳转按钮 */}
