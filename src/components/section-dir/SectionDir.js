@@ -1,17 +1,17 @@
-import SectionDirItem from '../section-dir-item/SectionDirItem'
-import { dirItemContext } from '../../App'
-import { useContext } from 'react'
+import SectionDirItem from "../section-dir-item/SectionDirItem";
+import { dirItemContext } from "../../App";
+import { useContext } from "react";
 
 function SectionDir({ dir }) {
-  const { showSideBar } = useContext(dirItemContext)
+  const { showSideBar } = useContext(dirItemContext);
   return (
     <div
-      className="fixed w-[320px] z-20 shadow-xl"
+      className="fixed z-20 w-[320px] shadow-xl"
       style={{
-        marginLeft: showSideBar ? '0' : '-320px',
+        marginLeft: showSideBar ? "0" : "-320px",
       }}
     >
-      <div className="scrollbar overflow-y-scroll flex-auto w-80 h-[calc(100vh_-_64px)] bg-[#f7f8fa] fixed">
+      <div className="scrollbar fixed h-[calc(100vh_-_64px)] w-80 flex-auto overflow-y-scroll bg-[#f7f8fa]">
         {dir.map(({ title, read_time }, idx) => {
           return (
             <SectionDirItem
@@ -20,10 +20,10 @@ function SectionDir({ dir }) {
               idx={idx}
               key={title}
             />
-          )
+          );
         })}
       </div>
     </div>
-  )
+  );
 }
-export default SectionDir
+export default SectionDir;
