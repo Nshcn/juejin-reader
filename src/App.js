@@ -133,9 +133,16 @@ function App() {
       <div className="flex items-center place-content-between font-bold text-xl px-6 w-full h-16 border-b fixed bg-white z-10">
         <div className="flex items-center gap-2 cursor-pointer">
           <div
-            className="w-6 h-6 rounded-full bg-sky-300"
+            className="w-6 h-6 "
             onClick={() => setShowSideBar((prev) => !prev)}
-          ></div>
+          >
+            <img
+              style={{
+                transform: showSideBar ? 'rotate(0deg)' : 'rotate(180deg)',
+              }}
+              src={require('./assets/fold.png')}
+            ></img>
+          </div>
           <div>{bookTitle}</div>
         </div>
         {/* 课程选择 */}
