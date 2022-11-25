@@ -2,6 +2,7 @@ import { createContext, useEffect, useState, useRef, forwardRef } from "react";
 import "./index.css";
 import SectionPage from "./components/section-page/SectionPage";
 import SectionDir from "./components/section-dir/SectionDir";
+import { server } from "./utils/config";
 
 export const dirItemContext = createContext({
   showSideBar: true,
@@ -23,7 +24,7 @@ function App() {
   // 获取书架信息
   useEffect(() => {
     async function fetchBookShelf() {
-      await fetch("http://127.0.0.1:4000/bookshelf")
+      await fetch(`http://${server}:4000/bookshelf`)
         .then((res) => res.json())
         .then((res) => {
           setBookShelf(res);
@@ -36,7 +37,7 @@ function App() {
   useEffect(() => {
     async function fetchBooklet() {
       await fetch(
-        `http://127.0.0.1:4000/book/${bookShelf[bookletIdx].booklet_id}`
+        `http://${server}:4000/book/${bookShelf[bookletIdx].booklet_id}`
       )
         .then((res) => res.json())
         .then((res) => {
