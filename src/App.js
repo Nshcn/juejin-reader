@@ -151,8 +151,10 @@ function App() {
         <div
           ref={bookShelfButtonRef}
           onClick={() => setShowBookShelf((prev) => !prev)}
-          className="h-8 w-8 cursor-pointer rounded-full border bg-sky-500"
-        ></div>
+          className="h-8 w-8 cursor-pointer"
+        >
+          <img src={require("./assets/book.png")} alt="书架"></img>
+        </div>
         {showBookShelf ? (
           <BookShelf ref={bookShelfRef} bookShelf={bookShelf} />
         ) : null}
