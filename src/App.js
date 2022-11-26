@@ -138,6 +138,7 @@ function App() {
             onClick={() => setShowSideBar((prev) => !prev)}
           >
             <img
+              alt=""
               style={{
                 transform: showSideBar ? "rotate(0deg)" : "rotate(180deg)",
               }}

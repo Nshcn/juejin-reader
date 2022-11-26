@@ -8,6 +8,7 @@ export default function Avatar() {
     >
       <img
         className="rounded-full"
+        alt="头像"
         src={require("../../assets/avatar.png")}
       ></img>
     </div>
