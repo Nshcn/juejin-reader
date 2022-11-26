@@ -1,1 +1,39 @@
+name: Deploy site files
 
+on:
+  push:
+    branches:
+      - master
+    paths-ignore: #下列文件的变更不触发部署，可以自行添加
+      - README.md
+      - LICENSE
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps: # 自动化步骤
+      - uses: actions/checkout@v2
+      - name: 切换源
+        run: npm config set registry http://registry.npm.taobao.org/
+      - name: npm install
+        run: npm install
+      - name: npm run build
+        run: npm run build
+      - name: Deploy
+        uses: cross-the-world/scp-pipeline@master
+        env:
+          WELCOME: 'ssh scp ssh pipelines'
+          LASTSSH: 'Doing something after copying'
+        with:
+          host: ${{ secrets.USER_HOST }} # 下面三个配置与上一步类似
+          user: ${{ secrets.USER_NAME }}
+          pass: ${{ secrets.USER_PASS }}
+          connect_timeout: 10s
+          local: './build/*'
+          remote: /usr/share/nginx/html
