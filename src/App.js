@@ -162,8 +162,8 @@ function App() {
         <SectionDir dir={dir} />
         <SectionPage
           setDirItemIdx={setDirItemIdx}
-          content={raw == "" ? "" : raw.sections[dirItemIdx].content}
-          comments={raw == "" ? "" : raw.comments[dirItemIdx].comment}
+          content={raw === "" ? "" : raw.sections[dirItemIdx].content}
+          comments={raw === "" ? "" : raw.comments[dirItemIdx].comment}
         />
       </div>
     </dirItemContext.Provider>

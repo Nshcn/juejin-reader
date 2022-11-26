@@ -9,13 +9,13 @@ function SectionDirItem({ idx, title, readTime }) {
       className="h-18 group relative flex w-full cursor-pointer p-2 px-6 text-left text-base text-black hover:bg-[#f1f1f3]"
       onClick={() => setDirItemIdx(idx)}
     >
-      {idx == dirItemIdx ? (
+      {idx === dirItemIdx ? (
         <span className="absolute top-3 left-0 block h-5 w-1 rounded-r bg-[#1e80ff] "></span>
       ) : null}
       {/* 章节号 */}
       <div
         style={{
-          color: idx == dirItemIdx ? "#1e80ff" : "#89919f",
+          color: idx === dirItemIdx ? "#1e80ff" : "#89919f",
         }}
         className="pr-2 font-bold "
       >
@@ -24,7 +24,7 @@ function SectionDirItem({ idx, title, readTime }) {
       {/* 章节标题 */}
       <div
         style={{
-          color: idx == dirItemIdx ? "#1e80ff" : "black",
+          color: idx === dirItemIdx ? "#1e80ff" : "black",
         }}
       >
         {title}
