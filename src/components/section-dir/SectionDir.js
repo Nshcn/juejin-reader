@@ -11,7 +11,7 @@ function SectionDir({ dir }) {
         marginLeft: showSideBar ? "0" : "-320px",
       }}
     >
-      <div className="scrollbar fixed h-[calc(100vh_-_64px)] w-80 flex-auto overflow-y-scroll bg-[#f7f8fa]">
+      <div className="scrollbar-thin fixed h-[calc(100vh_-_64px)] w-80 flex-auto overflow-y-scroll bg-white py-1 shadow-md">
         {dir.map(({ title, read_time }, idx) => {
           return (
             <SectionDirItem

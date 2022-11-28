@@ -3,12 +3,25 @@
 @tailwind utilities;
 
 @layer utilities {
-  .scrollbar {
+  .scrollbar-thin {
   }
-  .scrollbar::-webkit-scrollbar {
+  .scrollbar-thin::-webkit-scrollbar {
     width: 4px;
+    height: 0px;
+    z-index: 99;
   }
-  .scrollbar::-webkit-scrollbar-thumb {
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 4px;
+    background-color: #c9cdd4;
+  }
+  .scrollbar-thick {
+  }
+  .scrollbar-thick::-webkit-scrollbar {
+    width: 8px;
+    height: 0px;
+    z-index: 99;
+  }
+  .scrollbar-thick::-webkit-scrollbar-thumb {
     -webkit-border-radius: 4px;
     background-color: #c9cdd4;
   }

@@ -15,7 +15,7 @@ export default function SectionCommentsItem({ comment }) {
         {comment.replys.map((reply) => {
           return (
             <div
-              className="flex border-b bg-[#f7f8fa] p-2 text-sm"
+              className="flex rounded-md border-b bg-[#f7f8fa] p-2 text-sm"
               key={reply.user_name}
             >
               <div className="w-12">

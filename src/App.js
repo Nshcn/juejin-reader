@@ -103,12 +103,13 @@ function App() {
     return (
       <div
         ref={ref}
-        className="scrollbar fixed right-[48px] top-[80px] h-[450px] w-[270px] overflow-y-scroll rounded-md bg-white p-3 font-normal shadow-xl"
+        className="scrollbar-thin fixed right-[16px] top-[80px] max-h-[450px] w-[270px] overflow-y-scroll rounded-md bg-white py-2 pl-2 pr-1 font-normal shadow-xl"
       >
         {bookShelf.map((book, idx) => {
           return (
             <div
-              className=" cursor-pointer rounded-md p-1 text-sm hover:bg-slate-100"
+              className="cursor-pointer truncate rounded-md py-1 px-2 text-sm text-sky-900   hover:bg-slate-100 hover:text-orange-600"
+              title={book.title}
               key={book.title}
               onClick={() => setBookletIdx(idx)}
             >
@@ -131,10 +132,10 @@ function App() {
       }}
     >
       {/* header */}
-      <div className="fixed z-10 flex h-16 w-full place-content-between items-center border-b bg-white px-6 text-xl font-bold">
+      <div className="fixed z-10 flex h-16 w-full place-content-between items-center border-b bg-white px-6 text-xl font-bold shadow-md">
         <div className="flex cursor-pointer items-center gap-2">
           <div
-            className="h-6 w-6 "
+            className="h-6 w-6"
             onClick={() => setShowSideBar((prev) => !prev)}
           >
             <img
@@ -145,22 +146,29 @@ function App() {
               src={require("./assets/fold.png")}
             ></img>
           </div>
-          <div>{bookTitle}</div>
+          <div className="text-sky-900">{bookTitle}</div>
         </div>
         {/* 课程选择 */}
         <div
           ref={bookShelfButtonRef}
           onClick={() => setShowBookShelf((prev) => !prev)}
-          className="h-8 w-8 cursor-pointer"
+          className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border-sky-100 bg-sky-100 shadow-sm hover:bg-orange-200 hover:shadow-inner"
+          style={{
+            backgroundColor: showBookShelf ? "#fed7aa" : "",
+          }}
         >
-          <img src={require("./assets/book.png")} alt="书架"></img>
+          <img
+            className="h-8 w-8"
+            src={require("./assets/book.png")}
+            alt="书架"
+          ></img>
         </div>
         {showBookShelf ? (
           <BookShelf ref={bookShelfRef} bookShelf={bookShelf} />
         ) : null}
       </div>
       {/* 内容区 */}
-      <div className="flex bg-[#e4e5e5] pt-16">
+      <div className="flex bg-gray-200 pt-16">
         <SectionDir dir={dir} />
         <SectionPage
           setDirItemIdx={setDirItemIdx}

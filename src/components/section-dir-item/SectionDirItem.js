@@ -6,16 +6,21 @@ function SectionDirItem({ idx, title, readTime }) {
   const { dirItemIdx, setDirItemIdx } = useContext(dirItemContext);
   return (
     <div
-      className="h-18 group relative flex w-full cursor-pointer p-2 px-6 text-left text-base text-black hover:bg-[#f1f1f3]"
+      className="h-18 group relative mr-1 ml-2 flex cursor-pointer rounded-md py-2 pl-2 pr-4 text-left text-base hover:bg-sky-100 hover:shadow-inner"
       onClick={() => setDirItemIdx(idx)}
+      // style={{
+      //   backgroundColor: idx === dirItemIdx ? "#e0f2fe" : "",
+      //   boxShadow:
+      //     idx === dirItemIdx ? "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)" : "unset",
+      // }}
     >
       {idx === dirItemIdx ? (
-        <span className="absolute top-3 left-0 block h-5 w-1 rounded-r bg-[#1e80ff] "></span>
+        <span className="absolute top-2 -left-2 block h-7 w-1 rounded-r bg-sky-900 "></span>
       ) : null}
       {/* 章节号 */}
       <div
         style={{
-          color: idx === dirItemIdx ? "#1e80ff" : "#89919f",
+          color: idx === dirItemIdx ? "#ea580c" : "#0c4a6e",
         }}
         className="pr-2 font-bold "
       >
@@ -24,7 +29,7 @@ function SectionDirItem({ idx, title, readTime }) {
       {/* 章节标题 */}
       <div
         style={{
-          color: idx === dirItemIdx ? "#1e80ff" : "black",
+          color: idx === dirItemIdx ? "#ea580c" : "#0c4a6e",
         }}
       >
         {title}

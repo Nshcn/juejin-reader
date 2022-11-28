@@ -1,19 +1,24 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { dirItemContext } from "../../App";
 import SectionComments from "../section-comments/SectionComments";
 
 function SectionPage({ content, comments, setDirItemIdx }) {
   const { dirItemIdx, showSideBar, dirItemLength } = useContext(dirItemContext);
+  const pageRef = useRef(null);
+  const backToTop = () => {
+    pageRef.current.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div
       style={{
         marginLeft: showSideBar ? "320px" : "0",
       }}
-      className="ml-[320px] w-full"
+      className="scrollbar-thick relative ml-[320px] h-[calc(100vh_-_64px)] w-full overflow-scroll"
+      ref={pageRef}
     >
       {content === "" ? null : (
-        <div className=" book-section-view mx-auto mt-12 min-w-[600px] max-w-[800px] bg-white p-20 shadow-xl">
+        <div className=" book-section-view mx-auto mt-12 min-w-[600px] max-w-[800px] rounded-xl bg-white  p-20 shadow-md">
           {/* 内容区 */}
           <div dangerouslySetInnerHTML={{ __html: content }}></div>
           {/* 评论区 */}
@@ -21,27 +26,29 @@ function SectionPage({ content, comments, setDirItemIdx }) {
         </div>
       )}
       {/* 章节跳转按钮 */}
-      <div
-        style={{
-          marginLeft: showSideBar ? "160px" : "unset",
-        }}
-        className="fixed left-[50%] top-[50%] flex w-full max-w-[980px] -translate-x-1/2 place-content-between px-8"
-      >
+      <div className="fixed top-[40%] left-[50%] ml-[560px] flex-col place-content-between">
         <div
           style={{ visibility: dirItemIdx === 0 ? "hidden" : "visible" }}
           onClick={() => setDirItemIdx((prev) => prev - 1)}
-          className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-[#017fff] shadow-2xl"
+          className="m-2 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-sky-100 shadow-xl hover:bg-sky-200"
         >
-          <div className="ml-1 h-3 w-3 rotate-45 border-2 border-transparent border-l-white border-b-white"></div>
+          <div className="border-b-sky ml-1 h-3 w-3 rotate-45 border-2 border-transparent border-l-sky-900 border-b-sky-900"></div>
         </div>
         <div
           style={{
             visibility: dirItemIdx === dirItemLength - 1 ? "hidden" : "visible",
           }}
           onClick={() => setDirItemIdx((prev) => prev + 1)}
-          className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-[#017fff] shadow-2xl"
+          className="m-2 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-sky-100 shadow-xl hover:bg-sky-200"
         >
-          <div className="-ml-1 h-3 w-3 -rotate-[135deg] border-2 border-transparent border-l-white border-b-white"></div>
+          <div className="border-b-sky -ml-1 h-3 w-3 -rotate-[135deg] border-2 border-transparent border-l-sky-900 border-b-sky-900"></div>
+        </div>
+        <div
+          onClick={() => backToTop()}
+          className="relative m-2 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-orange-200 shadow-xl hover:bg-orange-300"
+        >
+          <div className="border-b-sky absolute top-6 h-3 w-3 -rotate-[225deg] border-2 border-transparent border-l-sky-900 border-b-sky-900"></div>
+          <div className="absolute top-4 h-[2px] w-4 bg-sky-900"></div>
         </div>
       </div>
     </div>
