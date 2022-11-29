@@ -37,7 +37,7 @@ function SectionPage({ content, comments, setDirItemIdx }) {
         <div
           onClick={() => setDirItemIdx((prev) => prev + 1)}
           className={`${
-            dirItemIdx === 0 ? "invisible" : "visible"
+            dirItemIdx === dirItemLength - 1 ? "invisible" : "visible"
           } m-2 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-sky-100 shadow-xl hover:bg-sky-200`}
         >
           <div className="border-b-sky -ml-1 h-3 w-3 -rotate-[135deg] border-2 border-transparent border-l-sky-900 border-b-sky-900"></div>
