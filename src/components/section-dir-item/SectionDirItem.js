@@ -8,29 +8,21 @@ function SectionDirItem({ idx, title, readTime }) {
     <div
       className="h-18 group relative mr-1 ml-2 flex cursor-pointer rounded-md py-2 pl-2 pr-4 text-left text-base hover:bg-sky-100 hover:shadow-inner"
       onClick={() => setDirItemIdx(idx)}
-      // style={{
-      //   backgroundColor: idx === dirItemIdx ? "#e0f2fe" : "",
-      //   boxShadow:
-      //     idx === dirItemIdx ? "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)" : "unset",
-      // }}
     >
       {idx === dirItemIdx ? (
         <span className="absolute top-2 -left-2 block h-7 w-1 rounded-r bg-sky-900 "></span>
       ) : null}
       {/* 章节号 */}
       <div
-        style={{
-          color: idx === dirItemIdx ? "#ea580c" : "#0c4a6e",
-        }}
-        className="pr-2 font-bold "
+        className={`pr-2 font-bold ${
+          idx === dirItemIdx ? "text-orange-600" : "text-sky-900"
+        }`}
       >
         {idx}
       </div>
       {/* 章节标题 */}
       <div
-        style={{
-          color: idx === dirItemIdx ? "#ea580c" : "#0c4a6e",
-        }}
+        className={`${idx === dirItemIdx ? "text-orange-600" : "text-sky-900"}`}
       >
         {title}
         <div className="mt-1 text-sm text-gray-400">

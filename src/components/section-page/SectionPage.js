@@ -11,10 +11,9 @@ function SectionPage({ content, comments, setDirItemIdx }) {
 
   return (
     <div
-      style={{
-        marginLeft: showSideBar ? "320px" : "0",
-      }}
-      className="scrollbar-thick relative ml-[320px] h-[calc(100vh_-_64px)] w-full overflow-scroll"
+      className={`${
+        showSideBar ? "ml-[320px]" : "ml-0"
+      } scrollbar-thick relative ml-[320px] h-[calc(100vh_-_64px)] w-full overflow-scroll`}
       ref={pageRef}
     >
       {content === "" ? null : (
@@ -28,18 +27,18 @@ function SectionPage({ content, comments, setDirItemIdx }) {
       {/* 章节跳转按钮 */}
       <div className="fixed top-[40%] left-[50%] ml-[560px] flex-col place-content-between">
         <div
-          style={{ visibility: dirItemIdx === 0 ? "hidden" : "visible" }}
           onClick={() => setDirItemIdx((prev) => prev - 1)}
-          className="m-2 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-sky-100 shadow-xl hover:bg-sky-200"
+          className={`${
+            dirItemIdx === 0 ? "invisible" : "visible"
+          } m-2 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-sky-100 shadow-xl hover:bg-sky-200`}
         >
           <div className="border-b-sky ml-1 h-3 w-3 rotate-45 border-2 border-transparent border-l-sky-900 border-b-sky-900"></div>
         </div>
         <div
-          style={{
-            visibility: dirItemIdx === dirItemLength - 1 ? "hidden" : "visible",
-          }}
           onClick={() => setDirItemIdx((prev) => prev + 1)}
-          className="m-2 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-sky-100 shadow-xl hover:bg-sky-200"
+          className={`${
+            dirItemIdx === 0 ? "invisible" : "visible"
+          } m-2 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-sky-100 shadow-xl hover:bg-sky-200`}
         >
           <div className="border-b-sky -ml-1 h-3 w-3 -rotate-[135deg] border-2 border-transparent border-l-sky-900 border-b-sky-900"></div>
         </div>

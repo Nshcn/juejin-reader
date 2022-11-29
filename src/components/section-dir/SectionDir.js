@@ -6,10 +6,9 @@ function SectionDir({ dir }) {
   const { showSideBar } = useContext(dirItemContext);
   return (
     <div
-      className="fixed z-20 w-[320px] shadow-xl"
-      style={{
-        marginLeft: showSideBar ? "0" : "-320px",
-      }}
+      className={`${
+        showSideBar ? "ml-0" : "-ml-[320px]"
+      } fixed z-20 w-[320px] shadow-xl`}
     >
       <div className="scrollbar-thin fixed h-[calc(100vh_-_64px)] w-80 flex-auto overflow-y-scroll bg-white py-1 shadow-md">
         {dir.map(({ title, read_time }, idx) => {

@@ -139,10 +139,8 @@ function App() {
             onClick={() => setShowSideBar((prev) => !prev)}
           >
             <img
+              className={`${showSideBar ? "rotate-0" : "rotate-180"}`}
               alt=""
-              style={{
-                transform: showSideBar ? "rotate(0deg)" : "rotate(180deg)",
-              }}
               src={require("./assets/fold.png")}
             ></img>
           </div>
@@ -152,10 +150,9 @@ function App() {
         <div
           ref={bookShelfButtonRef}
           onClick={() => setShowBookShelf((prev) => !prev)}
-          className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border-sky-100 bg-sky-100 shadow-sm hover:bg-orange-200 hover:shadow-inner"
-          style={{
-            backgroundColor: showBookShelf ? "#fed7aa" : "",
-          }}
+          className={`${
+            showBookShelf ? "bg-orange-200" : "bg-sky-100"
+          } flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border-sky-100 shadow-sm hover:bg-orange-200 hover:shadow-inner`}
         >
           <img
             className="h-8 w-8"
