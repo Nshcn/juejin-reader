@@ -21,6 +21,21 @@ function App() {
   const [bookShelf, setBookShelf] = useState([]);
   const [bookletIdx, setBookletIdx] = useState(0);
 
+  // 首次加载获取之前的进度进度
+  useEffect(() => {
+    let storage = window.localStorage;
+    let bookIdx = storage.getItem("bookIdx");
+    let dirIdx = storage.getItem("dirIdx");
+    setBookletIdx(bookIdx ? Number(bookIdx) : 0);
+    setDirItemIdx(dirIdx ? Number(dirIdx) : 0);
+  }, []);
+  // 保存当前阅读进度
+  useEffect(() => {
+    let storage = window.localStorage;
+    storage.setItem("bookIdx", bookletIdx);
+    storage.setItem("dirIdx", dirItemIdx);
+  }, [bookletIdx, dirItemIdx]);
+
   // 获取书架信息
   useEffect(() => {
     async function fetchBookShelf() {
@@ -54,7 +69,6 @@ function App() {
             return dir;
           };
           setDir(getDir(sections));
-          setDirItemIdx(0);
           setBookTitle(res.title);
         });
     }
