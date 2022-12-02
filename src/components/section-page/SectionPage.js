@@ -17,7 +17,7 @@ function SectionPage({ content, comments, setDirItemIdx }) {
       ref={pageRef}
     >
       {content === "" ? null : (
-        <div className=" book-section-view m-1 max-w-[800px] rounded-xl bg-white px-4 shadow-md sm:min-w-min lg:mx-auto lg:mt-12 lg:min-w-[600px] lg:p-20">
+        <div className=" book-section-view m-1 max-w-[800px] rounded-xl bg-white px-4 shadow-md sm:min-w-min lg:mx-auto lg:mt-12 lg:min-w-[600px] lg:px-20 lg:pt-8">
           {/* 内容区 */}
           <div dangerouslySetInnerHTML={{ __html: content }}></div>
           {/* 评论区 */}
