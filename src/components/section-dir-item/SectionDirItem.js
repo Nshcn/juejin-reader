@@ -3,11 +3,15 @@ import { dirItemContext } from "../../App";
 import { formatSecond } from "../../utils/utils";
 
 function SectionDirItem({ idx, title, readTime }) {
-  const { dirItemIdx, setDirItemIdx } = useContext(dirItemContext);
+  const { dirItemIdx, setDirItemIdx, setShowSideBar } =
+    useContext(dirItemContext);
   return (
     <div
       className="h-18 group relative mr-1 ml-2 flex cursor-pointer rounded-md py-2 pl-2 pr-4 text-left text-base hover:bg-sky-100 hover:shadow-inner"
-      onClick={() => setDirItemIdx(idx)}
+      onClick={() => {
+        setDirItemIdx(idx);
+        setShowSideBar(false);
+      }}
     >
       {idx === dirItemIdx ? (
         <span className="absolute top-2 -left-2 block h-7 w-1 rounded-r bg-sky-900 "></span>

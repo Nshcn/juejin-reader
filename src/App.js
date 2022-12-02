@@ -128,6 +128,7 @@ function App() {
               onClick={() => {
                 setBookletIdx(idx);
                 setDirItemIdx(0);
+                setShowBookShelf(false);
               }}
             >
               {book.title}
@@ -169,7 +170,7 @@ function App() {
           onClick={() => setShowBookShelf((prev) => !prev)}
           className={`${
             showBookShelf ? "bg-orange-200" : "bg-sky-100"
-          } flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border-sky-100 shadow-sm hover:bg-orange-200 hover:shadow-inner`}
+          } flex h-12 w-12 flex-none cursor-pointer items-center justify-center rounded-full border-sky-100 shadow-sm hover:bg-orange-200 hover:shadow-inner`}
         >
           <img
             className="h-8 w-8"

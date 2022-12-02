@@ -12,12 +12,12 @@ function SectionPage({ content, comments, setDirItemIdx }) {
   return (
     <div
       className={`${
-        showSideBar ? "ml-[320px]" : "ml-0"
-      } scrollbar-thick relative ml-[320px] h-[calc(100vh_-_64px)] w-full overflow-scroll`}
+        showSideBar ? "lg:ml-[320px]" : "ml-0"
+      } scrollbar-thin lg:scrollbar-thick relative h-[calc(100vh_-_64px)] w-full overflow-scroll`}
       ref={pageRef}
     >
       {content === "" ? null : (
-        <div className=" book-section-view mx-auto mt-12 min-w-[600px] max-w-[800px] rounded-xl bg-white  p-20 shadow-md">
+        <div className=" book-section-view m-1 max-w-[800px] rounded-xl bg-white px-4 shadow-md sm:min-w-min lg:mx-auto lg:mt-12 lg:min-w-[600px] lg:p-20">
           {/* 内容区 */}
           <div dangerouslySetInnerHTML={{ __html: content }}></div>
           {/* 评论区 */}
