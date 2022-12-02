@@ -3,6 +3,7 @@ import "./index.css";
 import SectionPage from "./components/section-page/SectionPage";
 import SectionDir from "./components/section-dir/SectionDir";
 import { server } from "./utils/config";
+import { GridLoader } from "react-spinners";
 
 export const dirItemContext = createContext({
   showSideBar: true,
@@ -20,6 +21,7 @@ function App() {
   const [bookTitle, setBookTitle] = useState("");
   const [bookShelf, setBookShelf] = useState([]);
   const [bookletIdx, setBookletIdx] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   // 首次加载获取之前的进度进度
   useEffect(() => {
@@ -70,6 +72,7 @@ function App() {
           };
           setDir(getDir(sections));
           setBookTitle(res.title);
+          setLoading(false);
         });
     }
     if (bookShelf.length > 0) {
@@ -126,6 +129,7 @@ function App() {
               title={book.title}
               key={book.title}
               onClick={() => {
+                setLoading(true);
                 setBookletIdx(idx);
                 setDirItemIdx(0);
                 setShowBookShelf(false);
@@ -149,6 +153,19 @@ function App() {
         setDirItemIdx,
       }}
     >
+      <div
+        className={`${
+          loading ? "block" : "hidden"
+        } absolute z-50 flex h-screen w-screen items-center justify-center bg-white opacity-40`}
+      >
+        <GridLoader
+          color="skyblue"
+          loading={loading}
+          size={30}
+          aria-label="Loading Spinner"
+        />
+      </div>
+
       {/* header */}
       <div className="fixed z-10 flex h-16 w-full place-content-between items-center border-b bg-white px-6 text-xl font-bold shadow-md">
         <div className="flex cursor-pointer items-center gap-2">
