@@ -12,11 +12,11 @@ export default function SectionCommentsItem({ comment }) {
           {comment.comment_content}
         </div>
         {/* 评论回复 */}
-        {comment.replys.map((reply) => {
+        {comment.replys.map((reply, idx) => {
           return (
             <div
               className="flex rounded-md border-b bg-[#f7f8fa] p-2 text-sm"
-              key={reply.user_name}
+              key={reply.user_name + idx}
             >
               <div className="w-12">
                 <Avatar />
