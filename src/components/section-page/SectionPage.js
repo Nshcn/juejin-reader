@@ -25,12 +25,12 @@ function SectionPage({ content, comments, setDirItemIdx }) {
         </div>
       )}
       {/* 章节跳转按钮 */}
-      <div className="fixed top-[40%] left-[50%] ml-[560px] flex-col place-content-between">
+      <div className="fixed bottom-4 left-[50%] ml-[135px] flex-col place-content-between lg:top-[40%] lg:ml-[560px]">
         <div
           onClick={() => setDirItemIdx((prev) => prev - 1)}
           className={`${
             dirItemIdx === 0 ? "invisible" : "visible"
-          } m-2 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-sky-100 shadow-xl hover:bg-sky-200`}
+          } m-2 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-sky-100 shadow-xl hover:bg-sky-200 lg:h-12 lg:w-12`}
         >
           <div className="border-b-sky ml-1 h-3 w-3 rotate-45 border-2 border-transparent border-l-sky-900 border-b-sky-900"></div>
         </div>
@@ -38,13 +38,13 @@ function SectionPage({ content, comments, setDirItemIdx }) {
           onClick={() => setDirItemIdx((prev) => prev + 1)}
           className={`${
             dirItemIdx === dirItemLength - 1 ? "invisible" : "visible"
-          } m-2 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-sky-100 shadow-xl hover:bg-sky-200`}
+          } m-2 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-sky-100 shadow-xl hover:bg-sky-200`}
         >
           <div className="border-b-sky -ml-1 h-3 w-3 -rotate-[135deg] border-2 border-transparent border-l-sky-900 border-b-sky-900"></div>
         </div>
         <div
           onClick={() => backToTop()}
-          className="relative m-2 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-orange-200 shadow-xl hover:bg-orange-300"
+          className="relative m-2 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-orange-200 shadow-xl hover:bg-orange-300"
         >
           <div className="border-b-sky absolute top-6 h-3 w-3 -rotate-[225deg] border-2 border-transparent border-l-sky-900 border-b-sky-900"></div>
           <div className="absolute top-4 h-[2px] w-4 bg-sky-900"></div>
