@@ -125,7 +125,10 @@ function App() {
               className="cursor-pointer truncate rounded-md py-1 px-2 text-sm text-sky-900   hover:bg-slate-100 hover:text-orange-600"
               title={book.title}
               key={book.title}
-              onClick={() => setBookletIdx(idx)}
+              onClick={() => {
+                setBookletIdx(idx);
+                setDirItemIdx(0);
+              }}
             >
               {book.title}
             </div>
