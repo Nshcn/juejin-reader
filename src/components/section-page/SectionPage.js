@@ -17,7 +17,7 @@ function SectionPage({ content, comments, setDirItemIdx }) {
       ref={pageRef}
     >
       {content === "" ? null : (
-        <div className=" book-section-view m-1 max-w-[800px] rounded-xl bg-white px-4 shadow-md sm:min-w-min lg:mx-auto lg:mt-12 lg:min-w-[600px] lg:px-20 lg:pt-8">
+        <div className=" book-section-view m-1 rounded-xl bg-white px-4 shadow-md sm:min-w-min lg:mx-auto lg:mt-12 lg:min-w-[600px] lg:max-w-[800px] lg:px-20 lg:pt-8">
           {/* 内容区 */}
           <div dangerouslySetInnerHTML={{ __html: content }}></div>
           {/* 评论区 */}
@@ -25,7 +25,7 @@ function SectionPage({ content, comments, setDirItemIdx }) {
         </div>
       )}
       {/* 章节跳转按钮 */}
-      <div className="fixed bottom-4 left-[50%] ml-[135px] flex-col place-content-between lg:top-[40%] lg:ml-[560px]">
+      <div className="fixed right-2 bottom-4 flex-col place-content-between lg:left-[50%] lg:top-[40%] lg:ml-[560px]">
         <div
           onClick={() => setDirItemIdx((prev) => prev - 1)}
           className={`${
@@ -38,13 +38,13 @@ function SectionPage({ content, comments, setDirItemIdx }) {
           onClick={() => setDirItemIdx((prev) => prev + 1)}
           className={`${
             dirItemIdx === dirItemLength - 1 ? "invisible" : "visible"
-          } m-2 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-sky-100 shadow-xl hover:bg-sky-200`}
+          } m-2 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-sky-100 shadow-xl hover:bg-sky-200 lg:h-12 lg:w-12`}
         >
           <div className="border-b-sky -ml-1 h-3 w-3 -rotate-[135deg] border-2 border-transparent border-l-sky-900 border-b-sky-900"></div>
         </div>
         <div
           onClick={() => backToTop()}
-          className="relative m-2 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-orange-200 shadow-xl hover:bg-orange-300"
+          className="relative m-2 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-orange-200 shadow-xl hover:bg-orange-300 lg:h-12 lg:w-12"
         >
           <div className="border-b-sky absolute top-6 h-3 w-3 -rotate-[225deg] border-2 border-transparent border-l-sky-900 border-b-sky-900"></div>
           <div className="absolute top-4 h-[2px] w-4 bg-sky-900"></div>
