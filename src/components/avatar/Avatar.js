@@ -1,4 +1,6 @@
-export default function Avatar() {
+import avatar from '../../assets/avatar.png'
+
+export default function Avatar () {
   return (
     <div
       className="h-8 w-8 rounded-full border-2 border-zinc-200 shadow-inner"
@@ -9,7 +11,7 @@ export default function Avatar() {
       <img
         className="rounded-full"
         alt="头像"
-        src={require("../../assets/avatar.png")}
+        src={avatar}
       ></img>
     </div>
   );

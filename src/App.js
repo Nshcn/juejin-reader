@@ -4,6 +4,8 @@ import SectionPage from "./components/section-page/SectionPage";
 import SectionDir from "./components/section-dir/SectionDir";
 import { server } from "./utils/config";
 import { GridLoader } from "react-spinners";
+import fold from './assets/fold.png'
+import book from './assets/book.png'
 
 export const dirItemContext = createContext({
   showSideBar: true,
@@ -176,7 +178,7 @@ function App() {
             <img
               className={`${showSideBar ? "rotate-0" : "rotate-180"}`}
               alt=""
-              src={require("./assets/fold.png")}
+              src={fold}
             ></img>
           </div>
           <div className="text-sky-900">{bookTitle}</div>
@@ -191,7 +193,7 @@ function App() {
         >
           <img
             className="h-8 w-8"
-            src={require("./assets/book.png")}
+            src={book}
             alt="书架"
           ></img>
         </div>
