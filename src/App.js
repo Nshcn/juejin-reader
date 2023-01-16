@@ -43,7 +43,7 @@ function App() {
   // 获取书架信息
   useEffect(() => {
     async function fetchBookShelf() {
-      await fetch(`https://${server}:4000/bookshelf`)
+      await fetch(`http://${server}:4000/bookshelf`)
         .then((res) => res.json())
         .then((res) => {
           setBookShelf(res);
@@ -56,7 +56,7 @@ function App() {
   useEffect(() => {
     async function fetchBooklet() {
       await fetch(
-        `https://${server}:4000/book/${bookShelf[bookletIdx].booklet_id}`
+        `http://${server}:4000/book/${bookShelf[bookletIdx].booklet_id}`
       )
         .then((res) => res.json())
         .then((res) => {
